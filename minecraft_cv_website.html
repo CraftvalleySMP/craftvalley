@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Craft Valley - Premium Minecraft Network</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #2a2a2a;
+            color: #1a1a1a;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Top Social Bar */
+        .top-social-bar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: transparent;
+            padding: 10px 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            border-bottom: none;
+            z-index: 1001;
+            transition: all 0.3s ease;
+        }
+
+        .top-social-bar.scrolled {
+            background: rgba(75, 140, 165, 0.9);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-center-group {
+            display: flex;
+            gap: 35px;
+            align-items: center;
+        }
+
+        .nav-center-group .logo {
+            margin-right: 15px;
+        }
+
+        .nav-center-group .nav-cta {
+            margin-left: 15px;
+        }
+
+        .social-icons-group {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            position: absolute;
+            right: 50px;
+        }
+
+        .social-icon-top {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 20px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            width: 42px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+
+        .social-icon-top:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .top-social-bar.scrolled .social-icon-top {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Navigation - Hidden now */
+        nav {
+            display: none;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-image {
+            height: 45px;
+            width: auto;
+            display: block;
+            filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+        }
+
+        .logo-accent {
+            color: #7ed321;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.95);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            letter-spacing: 0.3px;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+        }
+
+        .nav-links a:hover {
+            color: #ffffff;
+        }
+
+        .top-social-bar.scrolled .nav-links a {
+            text-shadow: none;
+        }
+
+        .nav-cta {
+            background: rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+            padding: 10px 24px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            backdrop-filter: blur(10px);
+            white-space: nowrap;
+        }
+
+        .nav-cta:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-1px);
+        }
+
+        .top-social-bar.scrolled .nav-cta {
+            background: rgba(80, 120, 140, 0.8);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .top-social-bar.scrolled .nav-cta:hover {
+            background: rgba(80, 120, 140, 1);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 150px 50px 100px;
+            background: 
+                linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.5) 100%),
+                url('banner.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            width: 100%;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(126, 211, 33, 0.15) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 150px;
+            background: linear-gradient(to bottom, transparent, #2a2a2a);
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            text-align: center;
+            z-index: 10;
+            position: relative;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(126, 211, 33, 0.5);
+            padding: 10px 22px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 35px;
+            color: #7ed321;
+            letter-spacing: 0.5px;
+            backdrop-filter: blur(10px);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: #7ed321;
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.1); }
+        }
+
+        .hero h1 {
+            font-size: 72px;
+            font-weight: 800;
+            margin-bottom: 24px;
+            line-height: 1.1;
+            letter-spacing: -2px;
+            color: #ffffff;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+        }
+
+        .hero h1 .gradient-text {
+            background: linear-gradient(135deg, #ffffff 0%, #7ed321 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-description {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 45px;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 400;
+            line-height: 1.7;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 18px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: #7ed321;
+            color: #ffffff;
+            padding: 16px 42px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: 0.3px;
+        }
+
+        .btn-primary:hover {
+            background: #8fe531;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(126, 211, 33, 0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(26, 26, 26, 0.5);
+            color: #fff;
+            padding: 16px 42px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            letter-spacing: 0.3px;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(26, 26, 26, 0.7);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Stats */
+        .stats-container {
+            margin-top: 90px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(126, 211, 33, 0.4);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-item:hover {
+            background: rgba(0, 0, 0, 0.7);
+            border-color: rgba(126, 211, 33, 0.6);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(126, 211, 33, 0.3);
+        }
+
+        .stat-number {
+            font-size: 42px;
+            font-weight: 800;
+            color: #7ed321;
+            letter-spacing: -1px;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 140px 50px;
+            max-width: 100%;
+            width: 100%;
+            margin: 0;
+            background: #2a2a2a;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section-label {
+            font-size: 13px;
+            font-weight: 600;
+            color: #7ed321;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: 52px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -1.5px;
+            color: #ffffff;
+        }
+
+        .section-subtitle {
+            font-size: 19px;
+            color: rgba(255, 255, 255, 0.6);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #3a3a3a 0%, #2f2f2f 100%);
+            border: 2px solid #7ed321;
+            padding: 45px;
+            border-radius: 20px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #7ed321, #5fa319, #7ed321);
+            transition: all 0.4s ease;
+        }
+
+        .feature-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top right, rgba(126, 211, 33, 0.15), transparent 60%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+
+        .feature-card:hover {
+            background: linear-gradient(135deg, #404040 0%, #353535 100%);
+            border-color: #8fe531;
+            transform: translateY(-8px);
+            box-shadow: 0 16px 40px rgba(126, 211, 33, 0.4);
+        }
+
+        .feature-card:hover::after {
+            opacity: 1;
+        }
+
+        .feature-icon {
+            font-size: 42px;
+            margin-bottom: 24px;
+            display: inline-block;
+            background: linear-gradient(135deg, #7ed321, #5fa319);
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(126, 211, 33, 0.25);
+        }
+
+        .feature-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 14px;
+            letter-spacing: -0.3px;
+            color: #ffffff;
+        }
+
+        .feature-description {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.7;
+            font-size: 15px;
+        }
+
+        /* Server Section */
+        .server-section {
+            padding: 140px 50px;
+            max-width: 100%;
+            width: 100%;
+            margin: 0;
+            background: #2a2a2a;
+        }
+
+        .server-container {
+            background: linear-gradient(135deg, rgba(126, 211, 33, 0.08) 0%, rgba(126, 211, 33, 0.03) 100%);
+            border: 1px solid rgba(126, 211, 33, 0.2);
+            padding: 70px 60px;
+            border-radius: 24px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .server-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 0%, rgba(126, 211, 33, 0.1) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .server-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .server-title {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 20px;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        .server-ip {
+            font-size: 42px;
+            font-weight: 800;
+            color: #7ed321;
+            margin: 24px 0;
+            letter-spacing: 1px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .server-info {
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 35px;
+            font-size: 15px;
+        }
+
+        .copy-button {
+            background: #7ed321;
+            color: #ffffff;
+            padding: 14px 38px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            letter-spacing: 0.3px;
+        }
+
+        .copy-button:hover {
+            background: #8fe531;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            border-top: 1px solid rgba(126, 211, 33, 0.2);
+            padding: 70px 50px 40px;
+            width: 100%;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .footer-logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 16px;
+        }
+
+        .social-link {
+            width: 44px;
+            height: 44px;
+            background: #2a2a2a;
+            border: 1px solid rgba(126, 211, 33, 0.3);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            background: rgba(126, 211, 33, 0.15);
+            border-color: rgba(126, 211, 33, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+            padding-top: 40px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(126, 211, 33, 0.15);
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 52px;
+            }
+
+            .hero-description {
+                font-size: 18px;
+            }
+
+            .stats-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 40px;
+            }
+
+            .server-ip {
+                font-size: 28px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .nav-container, .top-social-bar {
+                padding: 20px 25px;
+            }
+
+            .hero {
+                padding: 160px 25px 80px;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .features-section,
+            .server-section {
+                padding: 80px 25px;
+            }
+
+            .feature-card,
+            .server-container {
+                padding: 35px 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Social Bar -->
+    <div class="top-social-bar">
+        <div class="nav-center-group">
+            <div class="logo">
+                <img src="logo.png" alt="Craft Valley Logo" class="logo-image">
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#server">Server</a></li>
+                <li><a href="#community">Community</a></li>
+                <li><a href="#support">Support</a></li>
+            </ul>
+            <button class="nav-cta">Join Discord</button>
+        </div>
+        
+        <div class="social-icons-group">
+            <a href="#" class="social-icon-top">📺</a>
+            <a href="#" class="social-icon-top">📷</a>
+            <a href="#" class="social-icon-top">💬</a>
+            <a href="#" class="social-icon-top">🎵</a>
+        </div>
+    </div>
+
+    <!-- Navigation - removed -->
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="status-dot"></span>
+                247 Players Online
+            </div>
+            
+            <h1>
+                <span class="gradient-text">Premium Minecraft</span><br>
+                Experience Awaits
+            </h1>
+            
+            <p class="hero-description">
+                Join thousands of players in the most advanced Minecraft network. 
+                Custom gamemodes, professional hosting, and an active community.
+            </p>
+            
+            <div class="hero-buttons">
+                <button class="btn-primary">
+                    <span>▶</span>
+                    Start Playing
+                </button>
+                <button class="btn-secondary">Learn More</button>
+            </div>
+
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-number">12K+</div>
+                    <div class="stat-label">Players</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Uptime</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Gamemodes</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section" id="features">
+        <div class="section-header">
+            <div class="section-label">Features</div>
+            <h2 class="section-title">Why Choose Craft Valley</h2>
+            <p class="section-subtitle">
+                Experience the best Minecraft server with cutting-edge features and premium gameplay
+            </p>
+        </div>
+
+        <div class="features-grid">
