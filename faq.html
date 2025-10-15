@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Craft Valley</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #2a2a2a;
+            color: #ffffff;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Top Social Bar */
+        .top-social-bar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(75, 140, 165, 0.9);
+            padding: 10px 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 1001;
+            transition: all 0.3s ease;
+        }
+
+        .nav-center-group {
+            display: flex;
+            gap: 35px;
+            align-items: center;
+        }
+
+        .nav-center-group .logo {
+            margin-right: 15px;
+        }
+
+        .nav-center-group .nav-cta {
+            margin-left: 15px;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1002;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #ffffff;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 70px;
+            left: 0;
+            right: 0;
+            background: rgba(26, 26, 26, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            z-index: 1000;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .mobile-menu ul li {
+            margin-bottom: 15px;
+        }
+
+        .mobile-menu ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+            display: block;
+            padding: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu ul li a:hover {
+            color: #7ed321;
+            padding-left: 15px;
+        }
+
+        .mobile-menu .nav-cta {
+            width: 100%;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .social-icons-group {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            position: absolute;
+            right: 50px;
+        }
+
+        .social-icon-top {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 20px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            width: 42px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.25);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+
+        .social-icon-top:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-image {
+            height: 45px;
+            width: auto;
+            display: block;
+            filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.95);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            letter-spacing: 0.3px;
+        }
+
+        .nav-links a:hover {
+            color: #ffffff;
+        }
+
+        .nav-cta {
+            background: rgba(80, 120, 140, 0.8);
+            color: #ffffff;
+            padding: 10px 24px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            backdrop-filter: blur(10px);
+            white-space: nowrap;
+            text-decoration: none;
+        }
+
+        .nav-cta:hover {
+            background: rgba(80, 120, 140, 1);
+            transform: translateY(-1px);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 150px 50px 100px 50px;
+            background: #2a2a2a;
+            min-height: 100vh;
+        }
+
+        .section-title {
+            font-size: 56px;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+
+        .faq-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .server-info-box {
+            background: #1a1a1a;
+            border: 2px solid #6b6b6b;
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .server-info-box h3 {
+            font-size: 24px;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        .server-info-box p {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+        }
+
+        .server-info-box strong {
+            color: #ffffff;
+        }
+
+        .faq-item {
+            background: #1a1a1a;
+            border: 2px solid #6b6b6b;
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: #8b8b8b;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(107, 107, 107, 0.3);
+        }
+
+        .faq-question {
+            font-size: 20px;
+            color: #ffffff;
+            margin-bottom: 15px;
+            font-weight: 600;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .faq-question::before {
+            content: '›';
+            color: #6b6b6b;
+            font-size: 28px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .faq-answer {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+            padding-left: 38px;
+        }
+
+        .faq-answer strong {
+            color: #ffffff;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            border-top: 1px solid rgba(126, 211, 33, 0.2);
+            padding: 70px 50px 40px;
+            width: 100%;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .footer-logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .logo-text {
+            color: #ffffff;
+        }
+
+        .logo-accent {
+            color: #7ed321;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 16px;
+        }
+
+        .social-link {
+            width: 44px;
+            height: 44px;
+            background: #2a2a2a;
+            border: 1px solid rgba(126, 211, 33, 0.3);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            background: rgba(126, 211, 33, 0.15);
+            border-color: rgba(126, 211, 33, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+            padding-top: 40px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(126, 211, 33, 0.15);
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 14px;
+        }
+
+        @media (max-width: 968px) {
+            .nav-links {
+                display: none;
+            }
+
+            .nav-center-group .nav-cta {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+                position: absolute;
+                right: 50px;
+            }
+
+            .social-icons-group {
+                display: none;
+            }
+
+            .top-social-bar {
+                justify-content: flex-start;
+                padding: 10px 20px;
+            }
+
+            .nav-center-group {
+                gap: 0;
+            }
+
+            .faq-section {
+                padding: 120px 25px 80px 25px;
+            }
+
+            .section-title {
+                font-size: 40px;
+            }
+
+            .faq-item {
+                padding: 25px 20px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Social Bar -->
+    <div class="top-social-bar">
+        <div class="nav-center-group">
+            <div class="logo">
+                <img src="logo.png" alt="Craft Valley Logo" class="logo-image">
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#server">Jetzt Spielen</a></li>
+                <li><a href="index.html#features">Features</a></li>
+                <li><a href="index.html#guide">Erste Schritte</a></li>
+                <li><a href="regelwerk.html">Regelwerk</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="https://store.craftvalley.de/" target="_blank">Store</a></li>
+            </ul>
+            <button class="nav-cta" onclick="window.open('https://discord.gg/craftvalley', '_blank')">Join Discord</button>
+        </div>
+        
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        
+        <div class="social-icons-group">
+            <a href="#" class="social-icon-top">📺</a>
+            <a href="#" class="social-icon-top">📷</a>
+            <a href="#" class="social-icon-top">💬</a>
+            <a href="#" class="social-icon-top">🎵</a>
+        </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#server">Jetzt Spielen</a></li>
+            <li><a href="index.html#features">Features</a></li>
+            <li><a href="index.html#guide">Erste Schritte</a></li>
+            <li><a href="regelwerk.html">Regelwerk</a></li>
+            <li><a href="faq.html" onclick="toggleMenu()">FAQ</a></li>
+            <li><a href="https://store.craftvalley.de/" target="_blank">Store</a></li>
+        </ul>
+        <button class="nav-cta" onclick="window.open('https://discord.gg/craftvalley', '_blank')">Join Discord</button>
+    </div>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <h2 class="section-title">❓ FAQ</h2>
+        
+        <div class="faq-container">
+            <div class="server-info-box">
+                <h3>📊 Server Informationen</h3>
+                <p><strong>Version:</strong> 1.21.8</p>
+                <p><strong>Java IP:</strong> play.craftvalley.de</p>
+                <p><strong>Bedrock IP:</strong> bedrock.craftvalley.de | <strong>Port:</strong> 46410</p>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Q: Wie kann ich CraftValley auf Java oder Bedrock beitreten?</div>
+                <div class="faq-answer">Öffne auf der Java Edition Minecraft, gehe auf Multiplayer, füge <strong>play.craftvalley.de</strong> hinzu und trete bei. Auf der Bedrock Edition klickst du auf Spielen → Server hinzufügen und nutzen die IP <strong>bedrock.craftvalley.de</strong> und Port <strong>46410</strong>.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Q: Was unterscheidet Craft Valley von anderen Servern?</div>
+                <div class="faq-answer">Wir bieten echtes Crossplay zwischen Java- und Bedrock-Spielern und entwickeln den Server stetig mit neuen Features und Events weiter.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Q: Wie kann ich mein Grundstück sichern?</div>
+                <div class="faq-answer">Ab dem Rang Supporter kann ein Teammitglied dein Gebiet sichern. Mit <strong>/rg info</strong> siehst du alle Infos zu deiner Region und verwaltest Owner und Members.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Q: Wie funktioniert PvP auf dem Server?</div>
+                <div class="faq-answer">PvP ist nur in vorgesehenen PvP-Arenen erlaubt. In der offenen Welt ist PvP deaktiviert, um ein friedliches Spielerlebnis zu ermöglichen.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Q: Darf ich Lava und Feuer verwenden?</div>
+                <div class="faq-answer">Lava darf nur von Teammitgliedern platziert werden. Feuer darfst du innerhalb deiner eigenen Region frei nutzen.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Q: Was passiert, wenn ich Hilfe benötige?</div>
+                <div class="faq-answer">Unser Team ist jederzeit für dich da! Sprich uns im Chat an oder erstelle ein Ticket auf Discord unter <strong>🎫┃ticket-erstellen</strong>.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Q: Wie kann ich ein Teammitglied werden?</div>
+                <div class="faq-answer">Während Bewerbungsphasen kannst du dich bewerben. Alle Infos dazu findest du im Channel <strong>📝┃team-bewerbung</strong> auf unserem Discord.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Q: Was bringt es, den Server zu boosten oder Freunde einzuladen?</div>
+                <div class="faq-answer">Boosts und Einladungen bringen dir Belohnungen und Sonderrechte auf unserem Discord und Ingame. Gemeinsam macht es noch mehr Spaß!</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Q: Wie verlinke ich meinen Minecraft-Account mit Discord?</div>
+                <div class="faq-answer">Gib im Discord <strong>/link</strong> ein und klicke auf die Schaltfläche. Es wird nur dein Minecraft-Name benötigt - keine E-Mail oder Passwort. Vorteile: besondere Rolle, automatische Erkennung und kein manuelles Eingeben mehr!</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Q: Gibt es besondere Events?</div>
+                <div class="faq-answer">Ja! Jede Woche veranstalten wir spannende Events mit Preisen. Ankündigungen dazu findet du auf unserem Discord oder direkt im Spiel.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Q: Wie komme ich an Ränge und Fortschritte?</div>
+                <div class="faq-answer">Durch Spielzeit erspielst du dir Ränge. Alternativ kannst du Ränge im <strong>🛒┃store</strong> auf Discord erwerben.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Q: Wo finde ich das vollständige Regelwerk?</div>
+                <div class="faq-answer">Unser Regelwerk findest du auf unserem Discord unter <strong>📕┃regelwerk</strong> oder ingame mit <strong>/rules</strong>.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Q: Gibt es Gewinnspiele?</div>
+                <div class="faq-answer">Ja! In <strong>🎁┃gewinnspiele</strong> finden regelmäßig Gewinnspiele statt, bei denen du VIP, Ingame Geld und weitere Preise gewinnen kannst.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span class="logo-text">Craft</span>
+                <span class="logo-accent">Valley</span>
+            </div>
+            
+            <div class="social-links">
+                <a href="#" class="social-link">📺</a>
+                <a href="#" class="social-link">📷</a>
+                <a href="#" class="social-link">💬</a>
+                <a href="#" class="social-link">🎮</a>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            © 2024 Craft Valley Network. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const hamburger = document.querySelector('.hamburger');
+            menu.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

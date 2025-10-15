@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regelwerk - Craft Valley</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #2a2a2a;
+            color: #ffffff;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Top Social Bar */
+        .top-social-bar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(75, 140, 165, 0.9);
+            padding: 10px 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 1001;
+            transition: all 0.3s ease;
+        }
+
+        .nav-center-group {
+            display: flex;
+            gap: 35px;
+            align-items: center;
+        }
+
+        .nav-center-group .logo {
+            margin-right: 15px;
+        }
+
+        .nav-center-group .nav-cta {
+            margin-left: 15px;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1002;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #ffffff;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 70px;
+            left: 0;
+            right: 0;
+            background: rgba(26, 26, 26, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            z-index: 1000;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .mobile-menu ul li {
+            margin-bottom: 15px;
+        }
+
+        .mobile-menu ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+            display: block;
+            padding: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu ul li a:hover {
+            color: #7ed321;
+            padding-left: 15px;
+        }
+
+        .mobile-menu .nav-cta {
+            width: 100%;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .social-icons-group {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            position: absolute;
+            right: 50px;
+        }
+
+        .social-icon-top {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 20px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            width: 42px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.25);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+
+        .social-icon-top:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-image {
+            height: 45px;
+            width: auto;
+            display: block;
+            filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.95);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            letter-spacing: 0.3px;
+        }
+
+        .nav-links a:hover {
+            color: #ffffff;
+        }
+
+        .nav-cta {
+            background: rgba(80, 120, 140, 0.8);
+            color: #ffffff;
+            padding: 10px 24px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            backdrop-filter: blur(10px);
+            white-space: nowrap;
+            text-decoration: none;
+        }
+
+        .nav-cta:hover {
+            background: rgba(80, 120, 140, 1);
+            transform: translateY(-1px);
+        }
+
+        /* Regelwerk Section */
+        .regelwerk-section {
+            padding: 150px 50px 100px 50px;
+            background: #2a2a2a;
+            min-height: 100vh;
+        }
+
+        .section-title {
+            font-size: 56px;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+
+        .regelwerk-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .regelwerk-box {
+            background: #1a1a1a;
+            border: 2px solid #6b6b6b;
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .regelwerk-box:hover {
+            border-color: #8b8b8b;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(107, 107, 107, 0.3);
+        }
+
+        .regelwerk-box h3 {
+            font-size: 32px;
+            color: #ffffff;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .regelwerk-item {
+            margin-bottom: 25px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .regelwerk-item::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #6b6b6b;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .regelwerk-item h4 {
+            font-size: 20px;
+            color: #ffffff;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .regelwerk-item p {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+        }
+
+        .regelwerk-notice {
+            background: #1a1a1a;
+            border: 2px solid #6b6b6b;
+            border-radius: 16px;
+            padding: 30px;
+            margin-top: 40px;
+        }
+
+        .regelwerk-notice h3 {
+            font-size: 28px;
+            color: #ffffff;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .regelwerk-notice p {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            border-top: 1px solid rgba(126, 211, 33, 0.2);
+            padding: 70px 50px 40px;
+            width: 100%;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .footer-logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .logo-text {
+            color: #ffffff;
+        }
+
+        .logo-accent {
+            color: #7ed321;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 16px;
+        }
+
+        .social-link {
+            width: 44px;
+            height: 44px;
+            background: #2a2a2a;
+            border: 1px solid rgba(126, 211, 33, 0.3);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            background: rgba(126, 211, 33, 0.15);
+            border-color: rgba(126, 211, 33, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+            padding-top: 40px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(126, 211, 33, 0.15);
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 14px;
+        }
+
+        @media (max-width: 968px) {
+            .nav-links {
+                display: none;
+            }
+
+            .nav-center-group .nav-cta {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+                position: absolute;
+                right: 50px;
+            }
+
+            .social-icons-group {
+                display: none;
+            }
+
+            .top-social-bar {
+                justify-content: flex-start;
+                padding: 10px 20px;
+            }
+
+            .nav-center-group {
+                gap: 0;
+            }
+
+            .regelwerk-section {
+                padding: 120px 25px 80px 25px;
+            }
+
+            .section-title {
+                font-size: 40px;
+            }
+
+            .regelwerk-box {
+                padding: 30px 25px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Social Bar -->
+    <div class="top-social-bar">
+        <div class="nav-center-group">
+            <div class="logo">
+                <img src="logo.png" alt="Craft Valley Logo" class="logo-image">
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#server">Jetzt Spielen</a></li>
+                <li><a href="index.html#features">Features</a></li>
+                <li><a href="index.html#guide">Erste Schritte</a></li>
+                <li><a href="regelwerk.html">Regelwerk</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="https://store.craftvalley.de/" target="_blank">Store</a></li>
+            </ul>
+            <button class="nav-cta" onclick="window.open('https://discord.gg/craftvalley', '_blank')">Join Discord</button>
+        </div>
+        
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        
+        <div class="social-icons-group">
+            <a href="#" class="social-icon-top">📺</a>
+            <a href="#" class="social-icon-top">📷</a>
+            <a href="#" class="social-icon-top">💬</a>
+            <a href="#" class="social-icon-top">🎵</a>
+        </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#server">Jetzt Spielen</a></li>
+            <li><a href="index.html#features">Features</a></li>
+            <li><a href="index.html#guide">Erste Schritte</a></li>
+            <li><a href="regelwerk.html" onclick="toggleMenu()">Regelwerk</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="https://store.craftvalley.de/" target="_blank">Store</a></li>
+        </ul>
+        <button class="nav-cta" onclick="window.open('https://discord.gg/craftvalley', '_blank')">Join Discord</button>
+    </div>
+
+    <!-- Regelwerk Section -->
+    <section class="regelwerk-section">
+        <h2 class="section-title">📜 REGELWERK</h2>
+        
+        <div class="regelwerk-container">
+            <div class="regelwerk-box">
+                <h3>⛏️ Minecraft-Server:</h3>
+                
+                <div class="regelwerk-item">
+                    <h4>Griefing-Verbot</h4>
+                    <p>Griefing (mutwilliges Zerstören fremder Bauwerke) ist strengstens verboten.</p>
+                </div>
+
+                <div class="regelwerk-item">
+                    <h4>Cheats und Hacks</h4>
+                    <p>Die Nutzung von Cheats, Hacks oder Exploits, die Vorteile verschaffen, sind untersagt.</p>
+                </div>
+
+                <div class="regelwerk-item">
+                    <h4>PVP-Regeln</h4>
+                    <p>PVP ist nur in ausgewiesenen Bereichen erlaubt – außerhalb nur mit beiderseitigem Einverständnis.</p>
+                </div>
+
+                <div class="regelwerk-item">
+                    <h4>Bauen und Landschaft</h4>
+                    <p>Bauwerke sollen die Landschaft verschönern und dürfen keine anstößigen Inhalte darstellen.</p>
+                </div>
+
+                <div class="regelwerk-item">
+                    <h4>Technische Bauwerke</h4>
+                    <p>Farms und Redstone-Maschinen müssen serverfreundlich gebaut sein (keine massiven Lags verursachen).</p>
+                </div>
+
+                <div class="regelwerk-item">
+                    <h4>Bug- und Glitch-Meldung</h4>
+                    <p>Items, die durch Bugs oder Glitches erhalten wurden, sind sofort zu melden.</p>
+                </div>
+
+                <div class="regelwerk-item">
+                    <h4>AFK-Farmen</h4>
+                    <p>Das Bauen von AFK-Farmen ist erlaubt, solange sie den Server nicht überlasten.</p>
+                </div>
+
+                <div class="regelwerk-item">
+                    <h4>Grundstück-Respekt</h4>
+                    <p>Grundstücke sind zu respektieren – fremdes Eigentum darf nicht geplündert oder verändert werden.</p>
+                </div>
+
+                <div class="regelwerk-item">
+                    <h4>Handel und Fairness</h4>
+                    <p>Der Handel unter Spielern basiert auf Fairness – Scamming ist verboten.</p>
+                </div>
+            </div>
+
+            <div class="regelwerk-box">
+                <h3>🏗️ Baurichtlinien:</h3>
+                
+                <div class="regelwerk-item">
+                    <h4>Allgemeine Bauregeln</h4>
+                    <p>Alle Bauwerke müssen sich optisch an die Umgebung anpassen und dürfen weder unangemessen noch provokant sein.</p>
+                </div>
+
+                <div class="regelwerk-item">
+                    <h4>Farmen</h4>
+                    <p>Innerhalb eines Radius von 1000 Blöcken um den Spawn sind keine Farmen erlaubt. Hinterhalb von 1000 Blöcken sind kleine automatische Farmen (z. B. Zuckerrohr, Bambus, Kürbis) erlaubt, mit einer maximalen Größe von 1 Chunk (16×16 Blöcke) und bis zu 16 Blöcken Höhe. Pro Claim ist nur eine Farm erlaubt, und es müssen mindestens 16 Chunks Abstand zwischen zwei Farmen eingehalten werden. Farmen in Spielerbasen sind verboten. Unnötig große Farmen, die extreme Mengen produzieren oder den Server belasten könnten, sind ebenfalls verboten. Portal-Based-Farmen sind serverweit untersagt.</p>
+                </div>
+
+                <div class="regelwerk-item">
+                    <h4>Hopper Limit</h4>
+                    <p>Pro Claim sind maximal 100 Hopper erlaubt, und zwischen Farmen muss ein Abstand von mindestens 16 Chunks eingehalten werden.</p>
+                </div>
+
+                <div class="regelwerk-item">
+                    <h4>Automatisches Einlagerungsystem</h4>
+                    <p>Das automatische Einlagerungsystem ist nur für Clans gestattet.</p>
+                </div>
+
+                <div class="regelwerk-item">
+                    <h4>Tradinghalls</h4>
+                    <p>Private Tradinghalls sind verboten. Clans dürfen allerdings bis zu 20 Dorfbewohner besitzen, diese müssen sich jedoch im Clanhome befinden.</p>
+                </div>
+
+                <div class="regelwerk-item">
+                    <h4>Mobfarmen</h4>
+                    <p>Mobfarmen sind innerhalb eines Radius von 1000 Blöcken um den Spawn verboten. Außerhalb dieses Bereichs sind sie erlaubt.</p>
+                </div>
+
+                <div class="regelwerk-item">
+                    <h4>Chunkloader</h4>
+                    <p>Chunkloader sind auf dem gesamten Server verboten.</p>
+                </div>
+
+                <div class="regelwerk-item">
+                    <h4>Lag Vermeidung</h4>
+                    <p>Lag Maschinen sind verboten! Redstone Schaltungen müssen abschaltbar sein. Keine endlos laufenden Clocks oder Systeme, die den Server absichtlich belasten.</p>
+                </div>
+
+                <div class="regelwerk-item">
+                    <h4>Platzieren von Lava</h4>
+                    <p>Das platzieren von Lava ist nur von einen Teammitglied erlaubt, das umgehen dieses Systems ist untersagt.</p>
+                </div>
+
+                <div class="regelwerk-item">
+                    <h4>Chestshops</h4>
+                    <p>Chestshops sind nur in der Mall erlaubt. Außerhalb der Mall dürfen keine Chestshops gebaut werden.</p>
+                </div>
+
+                <div class="regelwerk-item">
+                    <h4>Casinos</h4>
+                    <p>Das erbauen von privaten Casinos ist untersagt.</p>
+                </div>
+
+                <div class="regelwerk-item">
+                    <h4>Inaktive Projekte</h4>
+                    <p>Bauwerke von Spielern, die länger als 30 Tage inaktiv sind, dürfen vom Administrativen Bereich entfernt und der Claim neu vergeben werden.</p>
+                </div>
+            </div>
+
+            <div class="regelwerk-box">
+                <h3>💬 Discord-Server:</h3>
+                
+                <div class="regelwerk-item">
+                    <h4>Verhalten und Freundlichkeit</h4>
+                    <p>Alle Mitglieder müssen respektvoll miteinander umgehen.</p>
+                </div>
+
+                <div class="regelwerk-item">
+                    <h4>Discord-Nutzungsbedingungen</h4>
+                    <p>Die Discord-Nutzungsbedingungen und Community-Richtlinien sind einzuhalten.</p>
+                </div>
+
+                <div class="regelwerk-item">
+                    <h4>Respekt und Toleranz</h4>
+                    <p>Diskriminierung, Beleidigungen oder toxisches Verhalten sind untersagt.</p>
+                </div>
+
+                <div class="regelwerk-item">
+                    <h4>Sprache im Server</h4>
+                    <p>Es ist erwünscht, dass auf Deutsch kommuniziert wird, damit alle mitreden können.</p>
+                </div>
+
+                <div class="regelwerk-item">
+                    <h4>Werbung und Spam</h4>
+                    <p>Werbung für andere Server, Produkte oder Dienstleistungen ist verboten.</p>
+                </div>
+
+                <div class="regelwerk-item">
+                    <h4>Umgang mit sensiblen Themen</h4>
+                    <p>Diskussionen über sensible Themen (z.B. Politik, Religion) sollten vermieden werden.</p>
+                </div>
+
+                <div class="regelwerk-item">
+                    <h4>Datenschutz</h4>
+                    <p>Private Daten dürfen nicht ohne Erlaubnis veröffentlicht werden.</p>
+                </div>
+
+                <div class="regelwerk-item">
+                    <h4>Speicherung von Nachrichten</h4>
+                    <p>Auf dem Discord können Nachrichten zu Moderationszwecken gespeichert werden.</p>
+                </div>
+            </div>
+
+            <div class="regelwerk-notice">
+                <h3>⚠️ Hinweis:</h3>
+                <p>Mit Ihrem Beitritt und Ihrer Anwesenheit auf diesem Server erklären Sie sich mit den oben genannten Regeln einverstanden. Das Craft Valley Community-Team behält sich das Recht vor, bei einem Verstoß nach eigenem Ermessen Maßnahmen einzuleiten.</p>
+                <p>Des Weiteren behält sich das Team das Recht vor, das Regelwerk jederzeit und ohne Begründung zu ändern.</p>
+                <p style="margin-top: 20px; color: #ffffff; font-weight: 600;">Wir wünschen Ihnen weiterhin viel Spaß und einen angenehmen Aufenthalt auf unserem Server.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span class="logo-text">Craft</span>
+                <span class="logo-accent">Valley</span>
+            </div>
+            
+            <div class="social-links">
+                <a href="#" class="social-link">📺</a>
+                <a href="#" class="social-link">📷</a>
+                <a href="#" class="social-link">💬</a>
+                <a href="#" class="social-link">🎮</a>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            © 2024 Craft Valley Network. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const hamburger = document.querySelector('.hamburger');
+            menu.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
