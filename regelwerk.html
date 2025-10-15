@@ -129,38 +129,6 @@
             margin-top: 10px;
         }
 
-        .social-icons-group {
-            display: flex;
-            gap: 12px;
-            align-items: center;
-            position: absolute;
-            right: 50px;
-        }
-
-        .social-icon-top {
-            color: rgba(255, 255, 255, 0.95);
-            font-size: 20px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            text-decoration: none;
-            width: 42px;
-            height: 42px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255, 255, 255, 0.25);
-            border: 2px solid rgba(255, 255, 255, 0.5);
-            border-radius: 8px;
-            backdrop-filter: blur(10px);
-        }
-
-        .social-icon-top:hover {
-            color: #ffffff;
-            background: rgba(255, 255, 255, 0.3);
-            border-color: rgba(255, 255, 255, 0.6);
-            transform: translateY(-2px);
-        }
-
         .logo {
             display: flex;
             align-items: center;
@@ -398,11 +366,7 @@
             .hamburger {
                 display: flex;
                 position: absolute;
-                right: 50px;
-            }
-
-            .social-icons-group {
-                display: none;
+                right: 20px;
             }
 
             .top-social-bar {
@@ -412,6 +376,11 @@
 
             .nav-center-group {
                 gap: 0;
+                margin: 0;
+            }
+
+            .logo-image {
+                height: 35px;
             }
 
             .regelwerk-section {
@@ -429,6 +398,20 @@
             .footer-content {
                 flex-direction: column;
                 text-align: center;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .section-title {
+                font-size: 32px;
+            }
+
+            .regelwerk-box h3 {
+                font-size: 24px;
+            }
+
+            .regelwerk-item h4 {
+                font-size: 18px;
             }
         }
     </style>
@@ -457,13 +440,6 @@
             <span></span>
             <span></span>
         </div>
-        
-        <div class="social-icons-group">
-            <a href="#" class="social-icon-top">📺</a>
-            <a href="#" class="social-icon-top">📷</a>
-            <a href="#" class="social-icon-top">💬</a>
-            <a href="#" class="social-icon-top">🎵</a>
-        </div>
     </div>
 
     <!-- Mobile Menu -->
@@ -482,11 +458,11 @@
 
     <!-- Regelwerk Section -->
     <section class="regelwerk-section">
-        <h2 class="section-title">📜 REGELWERK</h2>
+        <h2 class="section-title">REGELWERK</h2>
         
         <div class="regelwerk-container">
             <div class="regelwerk-box">
-                <h3>⛏️ Minecraft-Server:</h3>
+                <h3>Minecraft-Server:</h3>
                 
                 <div class="regelwerk-item">
                     <h4>Griefing-Verbot</h4>
@@ -535,7 +511,7 @@
             </div>
 
             <div class="regelwerk-box">
-                <h3>🏗️ Baurichtlinien:</h3>
+                <h3>Baurichtlinien:</h3>
                 
                 <div class="regelwerk-item">
                     <h4>Allgemeine Bauregeln</h4>
@@ -599,7 +575,7 @@
             </div>
 
             <div class="regelwerk-box">
-                <h3>💬 Discord-Server:</h3>
+                <h3>Discord-Server:</h3>
                 
                 <div class="regelwerk-item">
                     <h4>Verhalten und Freundlichkeit</h4>
@@ -643,7 +619,7 @@
             </div>
 
             <div class="regelwerk-notice">
-                <h3>⚠️ Hinweis:</h3>
+                <h3>Hinweis:</h3>
                 <p>Mit Ihrem Beitritt und Ihrer Anwesenheit auf diesem Server erklären Sie sich mit den oben genannten Regeln einverstanden. Das Craft Valley Community-Team behält sich das Recht vor, bei einem Verstoß nach eigenem Ermessen Maßnahmen einzuleiten.</p>
                 <p>Des Weiteren behält sich das Team das Recht vor, das Regelwerk jederzeit und ohne Begründung zu ändern.</p>
                 <p style="margin-top: 20px; color: #ffffff; font-weight: 600;">Wir wünschen Ihnen weiterhin viel Spaß und einen angenehmen Aufenthalt auf unserem Server.</p>
@@ -660,10 +636,10 @@
             </div>
             
             <div class="social-links">
-                <a href="#" class="social-link">📺</a>
-                <a href="#" class="social-link">📷</a>
-                <a href="#" class="social-link">💬</a>
-                <a href="#" class="social-link">🎮</a>
+                <a href="#" class="social-link">Y</a>
+                <a href="#" class="social-link">I</a>
+                <a href="#" class="social-link">D</a>
+                <a href="#" class="social-link">T</a>
             </div>
         </div>
         

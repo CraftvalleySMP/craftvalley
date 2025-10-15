@@ -52,6 +52,65 @@
             margin-left: 15px;
         }
 
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-image {
+            height: 45px;
+            width: auto;
+            display: block;
+            filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.95);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            letter-spacing: 0.3px;
+        }
+
+        .nav-links a:hover {
+            color: #ffffff;
+        }
+
+        .nav-cta {
+            background: rgba(80, 120, 140, 0.8);
+            color: #ffffff;
+            padding: 10px 24px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            backdrop-filter: blur(10px);
+            white-space: nowrap;
+            text-decoration: none;
+        }
+
+        .nav-cta:hover {
+            background: rgba(80, 120, 140, 1);
+            transform: translateY(-1px);
+        }
+
         .hamburger {
             display: none;
             flex-direction: column;
@@ -127,97 +186,6 @@
             width: 100%;
             text-align: center;
             margin-top: 10px;
-        }
-
-        .social-icons-group {
-            display: flex;
-            gap: 12px;
-            align-items: center;
-            position: absolute;
-            right: 50px;
-        }
-
-        .social-icon-top {
-            color: rgba(255, 255, 255, 0.95);
-            font-size: 20px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            text-decoration: none;
-            width: 42px;
-            height: 42px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255, 255, 255, 0.25);
-            border: 2px solid rgba(255, 255, 255, 0.5);
-            border-radius: 8px;
-            backdrop-filter: blur(10px);
-        }
-
-        .social-icon-top:hover {
-            color: #ffffff;
-            background: rgba(255, 255, 255, 0.3);
-            border-color: rgba(255, 255, 255, 0.6);
-            transform: translateY(-2px);
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 20px;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-        }
-
-        .logo-image {
-            height: 45px;
-            width: auto;
-            display: block;
-            filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 35px;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .nav-links a {
-            color: rgba(255, 255, 255, 0.95);
-            text-decoration: none;
-            font-size: 15px;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            letter-spacing: 0.3px;
-        }
-
-        .nav-links a:hover {
-            color: #ffffff;
-        }
-
-        .nav-cta {
-            background: rgba(80, 120, 140, 0.8);
-            color: #ffffff;
-            padding: 10px 24px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 13px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            backdrop-filter: blur(10px);
-            white-space: nowrap;
-            text-decoration: none;
-        }
-
-        .nav-cta:hover {
-            background: rgba(80, 120, 140, 1);
-            transform: translateY(-1px);
         }
 
         /* FAQ Section */
@@ -391,11 +359,7 @@
             .hamburger {
                 display: flex;
                 position: absolute;
-                right: 50px;
-            }
-
-            .social-icons-group {
-                display: none;
+                right: 20px;
             }
 
             .top-social-bar {
@@ -405,6 +369,11 @@
 
             .nav-center-group {
                 gap: 0;
+                margin: 0;
+            }
+
+            .logo-image {
+                height: 35px;
             }
 
             .faq-section {
@@ -422,6 +391,20 @@
             .footer-content {
                 flex-direction: column;
                 text-align: center;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .section-title {
+                font-size: 32px;
+            }
+
+            .faq-question {
+                font-size: 18px;
+            }
+
+            .faq-answer {
+                font-size: 15px;
             }
         }
     </style>
@@ -449,13 +432,6 @@
             <span></span>
             <span></span>
             <span></span>
-        </div>
-        
-        <div class="social-icons-group">
-            <a href="#" class="social-icon-top">📺</a>
-            <a href="#" class="social-icon-top">📷</a>
-            <a href="#" class="social-icon-top">💬</a>
-            <a href="#" class="social-icon-top">🎵</a>
         </div>
     </div>
 

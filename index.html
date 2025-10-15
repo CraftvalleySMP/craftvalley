@@ -22,7 +22,7 @@
             line-height: 1.6;
         }
 
-        /* Top Social Bar */
+        /* Top Navigation */
         .top-social-bar {
             position: fixed;
             top: 0;
@@ -55,6 +55,82 @@
 
         .nav-center-group .nav-cta {
             margin-left: 15px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-image {
+            height: 45px;
+            width: auto;
+            display: block;
+            filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.95);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            letter-spacing: 0.3px;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+        }
+
+        .nav-links a:hover {
+            color: #ffffff;
+        }
+
+        .top-social-bar.scrolled .nav-links a {
+            text-shadow: none;
+        }
+
+        .nav-cta {
+            background: rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+            padding: 10px 24px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            backdrop-filter: blur(10px);
+            white-space: nowrap;
+        }
+
+        .nav-cta:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-1px);
+        }
+
+        .top-social-bar.scrolled .nav-cta {
+            background: rgba(80, 120, 140, 0.8);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .top-social-bar.scrolled .nav-cta:hover {
+            background: rgba(80, 120, 140, 1);
+        }
+
+        nav {
+            display: none;
         }
 
         .hamburger {
@@ -132,119 +208,6 @@
             width: 100%;
             text-align: center;
             margin-top: 10px;
-        }
-
-        .social-icons-group {
-            display: flex;
-            gap: 12px;
-            align-items: center;
-            position: absolute;
-            right: 50px;
-        }
-
-        .social-icon-top {
-            color: rgba(255, 255, 255, 0.95);
-            font-size: 20px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            text-decoration: none;
-            width: 42px;
-            height: 42px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255, 255, 255, 0.2);
-            border: 2px solid rgba(255, 255, 255, 0.4);
-            border-radius: 8px;
-            backdrop-filter: blur(10px);
-        }
-
-        .social-icon-top:hover {
-            color: #ffffff;
-            background: rgba(255, 255, 255, 0.3);
-            border-color: rgba(255, 255, 255, 0.6);
-            transform: translateY(-2px);
-        }
-
-        .top-social-bar.scrolled .social-icon-top {
-            background: rgba(255, 255, 255, 0.25);
-            border-color: rgba(255, 255, 255, 0.5);
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 20px;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-        }
-
-        .logo-image {
-            height: 45px;
-            width: auto;
-            display: block;
-            filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 35px;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .nav-links a {
-            color: rgba(255, 255, 255, 0.95);
-            text-decoration: none;
-            font-size: 15px;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            letter-spacing: 0.3px;
-            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
-        }
-
-        .nav-links a:hover {
-            color: #ffffff;
-        }
-
-        .top-social-bar.scrolled .nav-links a {
-            text-shadow: none;
-        }
-
-        .nav-cta {
-            background: rgba(255, 255, 255, 0.15);
-            color: #ffffff;
-            padding: 10px 24px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 13px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            backdrop-filter: blur(10px);
-            white-space: nowrap;
-        }
-
-        .nav-cta:hover {
-            background: rgba(255, 255, 255, 0.25);
-            transform: translateY(-1px);
-        }
-
-        .top-social-bar.scrolled .nav-cta {
-            background: rgba(80, 120, 140, 0.8);
-            border-color: rgba(255, 255, 255, 0.3);
-        }
-
-        .top-social-bar.scrolled .nav-cta:hover {
-            background: rgba(80, 120, 140, 1);
-        }
-
-        nav {
-            display: none;
         }
 
         /* Hero Section */
@@ -588,6 +551,11 @@
             background-attachment: fixed;
         }
 
+        .guide-section-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
         .guide-section .section-title {
             color: #ffffff;
             text-align: center;
@@ -599,11 +567,6 @@
             align-items: center;
             justify-content: center;
             gap: 15px;
-        }
-
-        .guide-section-inner {
-            max-width: 1400px;
-            margin: 0 auto;
         }
 
         .guide-intro {
@@ -831,148 +794,6 @@
             margin: 24px 0 0 0;
         }
 
-        @media (max-width: 1200px) {
-            .inner-boxes {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 968px) {
-            .two-columns, .two-col-inner {
-                grid-template-columns: 1fr;
-            }
-        }
-        footer {
-            background: #1a1a1a;
-            border-top: 1px solid rgba(126, 211, 33, 0.2);
-            padding: 70px 50px 40px;
-            width: 100%;
-        }
-
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 30px;
-        }
-
-        .footer-logo {
-            font-size: 20px;
-            font-weight: 700;
-            color: #ffffff;
-        }
-
-        .logo-text {
-            color: #ffffff;
-        }
-
-        .logo-accent {
-            color: #7ed321;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 16px;
-        }
-
-        .social-link {
-            width: 44px;
-            height: 44px;
-            background: #2a2a2a;
-            border: 1px solid rgba(126, 211, 33, 0.3);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            transition: all 0.3s ease;
-            text-decoration: none;
-        }
-
-        .social-link:hover {
-            background: rgba(126, 211, 33, 0.15);
-            border-color: rgba(126, 211, 33, 0.3);
-            transform: translateY(-2px);
-        }
-
-        .footer-bottom {
-            max-width: 1400px;
-            margin: 0 auto;
-            text-align: center;
-            padding-top: 40px;
-            margin-top: 40px;
-            border-top: 1px solid rgba(126, 211, 33, 0.15);
-            color: rgba(255, 255, 255, 0.4);
-            font-size: 14px;
-        }
-
-        @media (max-width: 968px) {
-            .nav-links {
-                display: none;
-            }
-
-            .hero h1 {
-                font-size: 52px;
-            }
-
-            .hero-description {
-                font-size: 18px;
-            }
-
-            .stats-container {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .section-title {
-                font-size: 40px;
-            }
-
-            .server-ip {
-                font-size: 28px;
-            }
-
-            .footer-content {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
-
-        @media (max-width: 640px) {
-            .nav-container, .top-social-bar {
-                padding: 20px 25px;
-            }
-
-            .hero {
-                padding: 160px 25px 80px;
-            }
-
-            .hero h1 {
-                font-size: 42px;
-            }
-
-            .features-section,
-            .server-section {
-                padding: 80px 25px;
-            }
-
-            .feature-card,
-            .server-container {
-                padding: 35px 25px;
-            }
-
-            .store-grid {
-                grid-template-columns: 1fr !important;
-            }
-        }
-
         /* Store Section */
         .store-section {
             padding: 100px 50px;
@@ -1057,15 +878,195 @@
             box-shadow: 0 10px 30px rgba(107, 107, 107, 0.4);
         }
 
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            border-top: 1px solid rgba(126, 211, 33, 0.2);
+            padding: 70px 50px 40px;
+            width: 100%;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .footer-logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .logo-text {
+            color: #ffffff;
+        }
+
+        .logo-accent {
+            color: #7ed321;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 16px;
+        }
+
+        .social-link {
+            width: 44px;
+            height: 44px;
+            background: #2a2a2a;
+            border: 1px solid rgba(126, 211, 33, 0.3);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            background: rgba(126, 211, 33, 0.15);
+            border-color: rgba(126, 211, 33, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+            padding-top: 40px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(126, 211, 33, 0.15);
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 14px;
+        }
+
+        /* Responsive */
         @media (max-width: 1200px) {
+            .inner-boxes {
+                grid-template-columns: 1fr;
+            }
             .store-grid {
                 grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 968px) {
+            .nav-links {
+                display: none;
+            }
+
+            .nav-center-group .nav-cta {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+                position: absolute;
+                right: 20px;
+            }
+
+            .top-social-bar {
+                justify-content: flex-start;
+                padding: 10px 20px;
+            }
+
+            .nav-center-group {
+                gap: 0;
+                margin: 0;
+            }
+
+            .logo-image {
+                height: 35px;
+            }
+
+            .hero h1 {
+                font-size: 52px;
+            }
+
+            .hero-description {
+                font-size: 18px;
+            }
+
+            .stats-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 40px;
+            }
+
+            .server-ip {
+                font-size: 28px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .store-grid {
+                grid-template-columns: 1fr !important;
+            }
+
+            .two-columns, .two-col-inner {
+                grid-template-columns: 1fr;
             }
         }
 
         @media (max-width: 768px) {
             .store-grid {
                 grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero-description {
+                font-size: 16px;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .btn-primary {
+                width: 70px;
+                height: 70px;
+                font-size: 24px;
+            }
+
+            .server-card-title {
+                font-size: 20px;
+            }
+
+            .server-ip-box {
+                font-size: 16px;
+            }
+
+            .feature-card {
+                padding: 25px 20px;
+            }
+
+            .guide-intro, .guide-box {
+                padding: 25px 20px;
+            }
+
+            .two-columns {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -1088,12 +1089,24 @@
             <button class="nav-cta" onclick="window.open('https://discord.gg/craftvalley', '_blank')">Join Discord</button>
         </div>
         
-        <div class="social-icons-group">
-            <a href="#" class="social-icon-top">📺</a>
-            <a href="#" class="social-icon-top">📷</a>
-            <a href="#" class="social-icon-top">💬</a>
-            <a href="#" class="social-icon-top">🎵</a>
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="#home" onclick="toggleMenu()">Home</a></li>
+            <li><a href="#server" onclick="toggleMenu()">Jetzt Spielen</a></li>
+            <li><a href="#features" onclick="toggleMenu()">Features</a></li>
+            <li><a href="#guide" onclick="toggleMenu()">Erste Schritte</a></li>
+            <li><a href="regelwerk.html">Regelwerk</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="https://store.craftvalley.de/" target="_blank">Store</a></li>
+        </ul>
+        <button class="nav-cta" onclick="window.open('https://discord.gg/craftvalley', '_blank')">Join Discord</button>
     </div>
 
     <section class="hero" id="home">
@@ -1217,123 +1230,123 @@
         </div>
     </section>
 
-    <section class="guide-section">
+    <section class="guide-section" id="guide">
         <div class="guide-section-inner">
             <h2 class="section-title">🚀 ERSTE SCHRITTE</h2>
         
             <div class="guide-intro">
-            <h3>🎮 Willkommen auf CraftValley!</h3>
-            <p>Bevor du in unsere Minecraft-Welt eintauchen kannst, musst du wissen, wie du dich mit unserem Server verbindest. Egal, ob du die Java-Edition oder die Bedrock-Edition spielst, wir haben alles für dich vorbereitet!</p>
+                <h3>🎮 Willkommen auf CraftValley!</h3>
+                <p>Bevor du in unsere Minecraft-Welt eintauchen kannst, musst du wissen, wie du dich mit unserem Server verbindest. Egal, ob du die Java-Edition oder die Bedrock-Edition spielst, wir haben alles für dich vorbereitet!</p>
             
-            <div class="two-columns" style="margin-top: 30px;">
-                <div>
-                    <h4 style="color: #ffffff; margin-bottom: 15px;">☕ Für Java Edition:</h4>
-                    <ol class="guide-steps">
-                        <li>Starte Minecraft (Java-Edition)</li>
-                        <li>Klicke im Hauptmenü auf <strong>Multiplayer</strong></li>
-                        <li>Wähle <strong>Server hinzufügen</strong></li>
-                        <li>Server-Adresse: <strong>play.craftvalley.de</strong></li>
-                        <li>Klicke auf <strong>Fertig</strong> und dann <strong>Betreten</strong></li>
-                    </ol>
+                <div class="two-columns" style="margin-top: 30px;">
+                    <div>
+                        <h4 style="color: #ffffff; margin-bottom: 15px;">☕ Für Java Edition:</h4>
+                        <ol class="guide-steps">
+                            <li>Starte Minecraft (Java-Edition)</li>
+                            <li>Klicke im Hauptmenü auf <strong>Multiplayer</strong></li>
+                            <li>Wähle <strong>Server hinzufügen</strong></li>
+                            <li>Server-Adresse: <strong>play.craftvalley.de</strong></li>
+                            <li>Klicke auf <strong>Fertig</strong> und dann <strong>Betreten</strong></li>
+                        </ol>
+                    </div>
+
+                    <div>
+                        <h4 style="color: #ffffff; margin-bottom: 15px;">📱 Für Bedrock Edition:</h4>
+                        <ol class="guide-steps">
+                            <li>Öffne Minecraft (Bedrock-Edition)</li>
+                            <li>Klicke auf <strong>Spielen → Server</strong></li>
+                            <li>Klicke auf <strong>Server hinzufügen</strong></li>
+                            <li>Server-Adresse: <strong>bedrock.craftvalley.de</strong></li>
+                            <li>Port: <strong>46410</strong></li>
+                            <li>Drücke auf <strong>Hinzufügen</strong> und dann <strong>Betreten</strong></li>
+                        </ol>
+                    </div>
                 </div>
 
-                <div>
-                    <h4 style="color: #ffffff; margin-bottom: 15px;">📱 Für Bedrock Edition:</h4>
-                    <ol class="guide-steps">
-                        <li>Öffne Minecraft (Bedrock-Edition)</li>
-                        <li>Klicke auf <strong>Spielen → Server</strong></li>
-                        <li>Klicke auf <strong>Server hinzufügen</strong></li>
-                        <li>Server-Adresse: <strong>bedrock.craftvalley.de</strong></li>
-                        <li>Port: <strong>46410</strong></li>
-                        <li>Drücke auf <strong>Hinzufügen</strong> und dann <strong>Betreten</strong></li>
-                    </ol>
-                </div>
-            </div>
-
-            <div class="success-message">
-                <p>🎉 Du bist jetzt bereit, dich ins Abenteuer zu stürzen! Viel Spaß auf CraftValley!</p>
-            </div>
-        </div>
-
-        <div class="guide-content">
-            <div class="guide-box gray-border">
-                <h4 class="guide-box-title">💬 Unser Team ist immer für dich da!</h4>
-                <div class="guide-box-content">
-                    <p>Falls du während deines Aufenthalts auf dem Server auf Fragen oder Probleme stößt, sind wir hier, um dir zu helfen. Du kannst jederzeit mit einem unserer Teammitglieder in Kontakt treten.</p>
-                    <h5 style="color: #ffffff; margin: 20px 0 15px 0; font-weight: 700;">Wie du uns erreichst:</h5>
-                    <ul class="guide-list">
-                        <li><strong>Fragen stellen:</strong> Nutze einfach den Chat im Discord oder Minecraft</li>
-                        <li><strong>Tickets erstellen:</strong> Im Discord-Kanal <strong>#ticket-erstellen</strong> kannst du ein Ticket eröffnen. Das Team meldet sich umgehend!</li>
-                    </ul>
-                    <p style="font-style: italic; margin-top: 20px;">Wir sind stets darum bemüht, dir ein tolles Spielerlebnis zu bieten und sicherzustellen, dass du dich auf CraftValley immer gut aufgehoben fühlst!</p>
+                <div class="success-message">
+                    <p>🎉 Du bist jetzt bereit, dich ins Abenteuer zu stürzen! Viel Spaß auf CraftValley!</p>
                 </div>
             </div>
 
-            <div class="guide-box gray-border">
-                <h4 class="guide-box-title">🛡️ Schütze dein Bauwerk!</h4>
-                <div class="guide-box-content">
-                    <p>Auf CraftValley hast du viele Möglichkeiten, deine Gebäude zu schützen und die Welt zu erkunden, ohne dir Sorgen um ungewolltes Griefing oder PvP machen zu müssen.</p>
+            <div class="guide-content">
+                <div class="guide-box gray-border">
+                    <h4 class="guide-box-title">💬 Unser Team ist immer für dich da!</h4>
+                    <div class="guide-box-content">
+                        <p>Falls du während deines Aufenthalts auf dem Server auf Fragen oder Probleme stößt, sind wir hier, um dir zu helfen. Du kannst jederzeit mit einem unserer Teammitglieder in Kontakt treten.</p>
+                        <h5 style="color: #ffffff; margin: 20px 0 15px 0; font-weight: 700;">Wie du uns erreichst:</h5>
+                        <ul class="guide-list">
+                            <li><strong>Fragen stellen:</strong> Nutze einfach den Chat im Discord oder Minecraft</li>
+                            <li><strong>Tickets erstellen:</strong> Im Discord-Kanal <strong>#ticket-erstellen</strong> kannst du ein Ticket eröffnen. Das Team meldet sich umgehend!</li>
+                        </ul>
+                        <p style="font-style: italic; margin-top: 20px;">Wir sind stets darum bemüht, dir ein tolles Spielerlebnis zu bieten und sicherzustellen, dass du dich auf CraftValley immer gut aufgehoben fühlst!</p>
+                    </div>
+                </div>
+
+                <div class="guide-box gray-border">
+                    <h4 class="guide-box-title">🛡️ Schütze dein Bauwerk!</h4>
+                    <div class="guide-box-content">
+                        <p>Auf CraftValley hast du viele Möglichkeiten, deine Gebäude zu schützen und die Welt zu erkunden, ohne dir Sorgen um ungewolltes Griefing oder PvP machen zu müssen.</p>
                     
-                    <div class="inner-boxes">
-                        <div class="inner-box">
-                            <h5>🔒 Gebiete sperren</h5>
-                            <p>Melde dich bei einem Teammitglied, damit wird dein Gebiet abgesichert. Niemand kann ohne deine Erlaubnis bauen oder zerstören.</p>
-                        </div>
-                        <div class="inner-box">
-                            <h5>🗝️ Bau-Server</h5>
-                            <p>Der perfekte Ort, um kreativ zu sein! Hier kannst du ohne Einschränkungen bauen, solange du respektvoll bleibst.</p>
-                        </div>
-                        <div class="inner-box">
-                            <h5>⚔️ PvP-Bereiche</h5>
-                            <p>PvP ist nur in vorgesehenen Bereichen erlaubt. Besuche die PvP-Arena und fordere andere Spieler heraus!</p>
+                        <div class="inner-boxes">
+                            <div class="inner-box">
+                                <h5>🔒 Gebiete sperren</h5>
+                                <p>Melde dich bei einem Teammitglied, damit wird dein Gebiet abgesichert. Niemand kann ohne deine Erlaubnis bauen oder zerstören.</p>
+                            </div>
+                            <div class="inner-box">
+                                <h5>🗝️ Bau-Server</h5>
+                                <p>Der perfekte Ort, um kreativ zu sein! Hier kannst du ohne Einschränkungen bauen, solange du respektvoll bleibst.</p>
+                            </div>
+                            <div class="inner-box">
+                                <h5>⚔️ PvP-Bereiche</h5>
+                                <p>PvP ist nur in vorgesehenen Bereichen erlaubt. Besuche die PvP-Arena und fordere andere Spieler heraus!</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="guide-box gray-border">
-                <h4 class="guide-box-title">🎁 Belohnungen & Vorteile</h4>
-                <div class="guide-box-content">
-                    <p>Auf CraftValley geht es nicht nur um das Spiel - wir möchten auch deine Community-Erfahrung bereichern! Wenn du Freunde einlädst oder uns hilfst, den Server zu boosten, belohnen wir dich mit coolen Vorteilen!</p>
+                <div class="guide-box gray-border">
+                    <h4 class="guide-box-title">🎁 Belohnungen & Vorteile</h4>
+                    <div class="guide-box-content">
+                        <p>Auf CraftValley geht es nicht nur um das Spiel - wir möchten auch deine Community-Erfahrung bereichern! Wenn du Freunde einlädst oder uns hilfst, den Server zu boosten, belohnen wir dich mit coolen Vorteilen!</p>
                     
-                    <div class="two-col-inner">
-                        <div class="highlight-box" style="background: rgba(126, 211, 33, 0.1) !important;">
-                            <h5>⚡ Server Boosting</h5>
-                            <p>Boostest du den Discord-Server, erhältst du exklusive Booster-Ränge, besondere Vorteile und Ingame-Belohnungen!</p>
-                        </div>
-                        <div class="highlight-box" style="background: rgba(126, 211, 33, 0.1) !important;">
-                            <h5>👥 Freunde einladen</h5>
-                            <p>Lade Freunde ein und erhalte Belohnungen! Je mehr Freunde, desto mehr Vorteile. Beide profitieren davon!</p>
+                        <div class="two-col-inner">
+                            <div class="highlight-box" style="background: rgba(126, 211, 33, 0.1) !important;">
+                                <h5>⚡ Server Boosting</h5>
+                                <p>Boostest du den Discord-Server, erhältst du exklusive Booster-Ränge, besondere Vorteile und Ingame-Belohnungen!</p>
+                            </div>
+                            <div class="highlight-box" style="background: rgba(126, 211, 33, 0.1) !important;">
+                                <h5>👥 Freunde einladen</h5>
+                                <p>Lade Freunde ein und erhalte Belohnungen! Je mehr Freunde, desto mehr Vorteile. Beide profitieren davon!</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="guide-box blue-border">
-                <h4 class="guide-box-title" style="color: #5c9cff;">🔗 Verknüpfe deinen Minecraft-Account mit Discord!</h4>
-                <div class="guide-box-content">
-                    <p>Um dein Spielerlebnis noch besser zu gestalten und uns als Team zu helfen, dich besser zu erkennen, kannst du deinen Minecraft-Account direkt mit Discord verknüpfen. Sobald du dies getan hast, erhältst du besondere Rollen und zusätzliche Vorteile!</p>
+                <div class="guide-box blue-border">
+                    <h4 class="guide-box-title" style="color: #5c9cff;">🔗 Verknüpfe deinen Minecraft-Account mit Discord!</h4>
+                    <div class="guide-box-content">
+                        <p>Um dein Spielerlebnis noch besser zu gestalten und uns als Team zu helfen, dich besser zu erkennen, kannst du deinen Minecraft-Account direkt mit Discord verknüpfen. Sobald du dies getan hast, erhältst du besondere Rollen und zusätzliche Vorteile!</p>
                     
-                    <h5 style="color: #ffffff; margin: 25px 0 15px 0; font-weight: 700;">🔐 So verknüpfst du deinen Account:</h5>
-                    <ol class="guide-steps">
-                        <li>Gib im Discord-Chat den Befehl <strong>/link</strong> ein</li>
-                        <li>Klicke auf die angezeigte Schaltfläche</li>
-                        <li>Du wirst <strong>NICHT</strong> aufgefordert, E-Mail oder Passwort einzugeben - nur dein Name!</li>
-                        <li>Fertig! Dein Account wird automatisch verknüpft</li>
-                    </ol>
+                        <h5 style="color: #ffffff; margin: 25px 0 15px 0; font-weight: 700;">🔐 So verknüpfst du deinen Account:</h5>
+                        <ol class="guide-steps">
+                            <li>Gib im Discord-Chat den Befehl <strong>/link</strong> ein</li>
+                            <li>Klicke auf die angezeigte Schaltfläche</li>
+                            <li>Du wirst <strong>NICHT</strong> aufgefordert, E-Mail oder Passwort einzugeben - nur dein Name!</li>
+                            <li>Fertig! Dein Account wird automatisch verknüpft</li>
+                        </ol>
                     
-                    <h5 style="color: #ffffff; margin: 25px 0 15px 0; font-weight: 700;">✨ Vorteile der Verknüpfung:</h5>
-                    <ul class="guide-list">
-                        <li>Dein Minecraft-Name wird automatisch ausgefüllt</li>
-                        <li>Du erhältst besondere Rollen auf Discord</li>
-                        <li>Das Team kann dich besser erkennen und schneller helfen</li>
-                    </ul>
+                        <h5 style="color: #ffffff; margin: 25px 0 15px 0; font-weight: 700;">✨ Vorteile der Verknüpfung:</h5>
+                        <ul class="guide-list">
+                            <li>Dein Minecraft-Name wird automatisch ausgefüllt</li>
+                            <li>Du erhältst besondere Rollen auf Discord</li>
+                            <li>Das Team kann dich besser erkennen und schneller helfen</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Store Section -->
     <section class="store-section" id="store">
         <h2 class="section-title">🛒 STORE</h2>
         <p class="store-subtitle">Unterstütze Craft Valley und erhalte exklusive Vorteile!</p>
